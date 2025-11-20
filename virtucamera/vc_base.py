@@ -1,5 +1,5 @@
 # PyVirtuCamera
-# Copyright (c) 2021 Pablo Javier Garcia Gonzalez.
+# Copyright (c) 2025 The Weird Byte.
 # 
 # Redistribution and use of the software module "PyVirtuCamera" (the “Software”)
 # is permitted, free of charge, provided that the following conditions are met:
@@ -663,5 +663,6 @@ class VCBase(metaclass=ABCMeta):
         current_camera : str
             Name of the currently selected camera
         """
+
 
         return False
