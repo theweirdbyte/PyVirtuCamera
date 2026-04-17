@@ -1,47 +1,163 @@
-PyVirtuCamera
-Copyright (c) 2025 The Weird Byte.
+PyVirtuCamera License
+Copyright (c) 2026 The Weird Byte S.L.
+All rights reserved.
 
-Redistribution and use of the software module "PyVirtuCamera" (the “Software”)
-is permitted, free of charge, provided that the following conditions are met:
-    * Redistributions must reproduce the above copyright notice,
-      this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * You may not decompile, disassemble, reverse engineer or modify
-      any portion of the Software.
+This PyVirtuCamera SDK/API License (“License”) governs your access to and use of
+the PyVirtuCamera software development kit, application programming interface,
+related modules, headers, libraries, examples, and developer documentation
+(collectively, the “SDK”).
 
-THE SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY DIRECT,
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
-OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE SOFTWARE,
-EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+By downloading, installing, accessing, or using the SDK, you agree to this License.
+If you do not agree, do not use the SDK.
 
+1. Definitions
 
- - - - - - Acknowledgements - - - - -
+“VirtuCamera App” means the VirtuCamera mobile application and related services
+provided by The Weird Byte S.L.
 
-PyVirtuCamera is distributed along with the following software libraries:
+“Plugin” means any connector, add-on, extension, integration, bridge, adapter,
+or other software component that uses, links to, calls, embeds, depends on,
+or otherwise makes use of the SDK in order to enable interoperability between
+the VirtuCamera App and a third-party Digital Content Creation host application
+or related environment.
 
-* FFmpeg (https://www.ffmpeg.org)
-  License: LGPL
+“You” means the individual or legal entity using the SDK.
 
-* PyAV (https://github.com/PyAV-Org/PyAV)
-  License: BSD
+2. License Grant
 
-* PyPNG (https://github.com/drj11/pypng)
-  License: MIT
+Subject to your compliance with this License and any applicable VirtuCamera terms,
+The Weird Byte S.L. grants you a limited, revocable, non-exclusive,
+non-transferable, non-sublicensable license to use the SDK solely to:
 
-* python-qrcode (https://github.com/lincolnloop/python-qrcode)
-  License: MIT
+(a) develop, test, and internally evaluate Plugins;
+(b) connecting and operating Plugins with the VirtuCamera App through the SDK,
+provided that the VirtuCamera App is validly licensed and used in accordance
+with the applicable VirtuCamera terms; and
+(c) distribute Plugins only as expressly permitted under Section 4 of this License.
 
-* ifaddr (https://github.com/pydron/ifaddr)
-  License: MIT
+No ownership rights are transferred. The SDK is licensed, not sold.
 
-* python-mss (https://github.com/BoboTiG/python-mss)
-  License: MIT
+3. Restrictions
 
-* six (https://github.com/benjaminp/six)
-  License: MIT
+Except as expressly permitted by this License or by mandatory law, you must not:
+
+(a) sell, sublicense, rent, lease, lend, assign, distribute, host, publish,
+or otherwise make the SDK available to any third party;
+(b) copy, modify, adapt, translate, create derivative works from, decompile,
+disassemble, reverse engineer, or otherwise attempt to derive source code from
+the SDK or any part of it;
+(c) remove, alter, or obscure any copyright, trademark, attribution,
+proprietary notice, or disclaimer in the SDK;
+(d) use the SDK to circumvent licensing checks, paywalls, technical restrictions,
+or security measures of the VirtuCamera App or related services;
+(e) use the SDK in any unlawful manner or in any way that infringes the rights
+of The Weird Byte S.L. or any third party;
+(f) represent that your Plugin is endorsed by, certified by, or officially
+affiliated with The Weird Byte S.L. unless we have expressly agreed in writing.
+
+4. Distribution of Plugins by Third Parties
+
+4.1 Scope.
+This Section governs distribution of any Plugin developed by a third party
+using the SDK.
+
+4.2 No automatic commercialization right.
+This License does not grant you any right to commercialize a Plugin.
+
+You must not sell, license for a fee, monetize, rent, lease, white-label,
+bundle for consideration, commercially distribute, commercially exploit,
+market, or list any Plugin unless you first enter into a separate written
+agreement with The Weird Byte S.L. expressly permitting that activity.
+
+4.3 Free distribution condition.
+If you wish to distribute a Plugin for free and without commercialization,
+you may do so only if, before or at the time of such distribution, you provide
+The Weird Byte S.L. with:
+
+(a) the complete corresponding source code of the Plugin; and
+(b) build instructions and other materials reasonably sufficient to reproduce
+the Plugin build.
+
+By distributing a Plugin for free under this Section, you grant The Weird Byte S.L.
+a worldwide, non-exclusive, royalty-free, perpetual, irrevocable license to use,
+copy, reproduce, modify as needed for maintenance and compatibility, distribute,
+publicly make available, and redistribute that Plugin, including its source code
+and compiled binaries.
+
+4.4 Right to refuse or disable.
+The Weird Byte S.L. may refuse to allow, may decline to distribute, or may
+remove, disable, or request cessation of distribution of any Plugin at its
+discretion, including for security risks, legal risks, infringement claims,
+policy violations, incompatibility, operational concerns, or harm to users,
+the VirtuCamera App, or related services.
+
+4.5 No support obligation.
+The Weird Byte S.L. has no obligation to provide developer support,
+documentation updates, compatibility maintenance, or review/approval services,
+unless separately agreed in writing.
+
+5. Third-Party Compliance
+
+You are solely responsible for ensuring that any Plugin you develop or distribute:
+
+(a) complies with the terms, licenses, and policies of the applicable host DCC;
+(b) complies with all open-source and third-party license obligations for code
+you include or depend on; and
+(c) does not violate applicable law or third-party rights.
+
+6. Ownership
+
+The SDK, including all intellectual property rights in and to the SDK,
+is and shall remain the exclusive property of The Weird Byte S.L. and its licensors.
+Except for the limited rights expressly granted in this License, no rights are granted
+to you by implication, estoppel, or otherwise.
+
+7. Termination
+
+This License begins when you first access or use the SDK and continues until terminated.
+
+The Weird Byte S.L. may suspend or terminate this License immediately if you breach
+this License, if your Plugin or use of the SDK creates legal, security, or operational
+risk, or if we are required to do so by law.
+
+Upon termination, you must immediately stop using the SDK and destroy or delete all
+copies of the SDK in your possession or control.
+
+Sections 3, 4, 5, 6, 7, 8, and 9 survive termination.
+
+8. Disclaimer of Warranties
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SDK IS PROVIDED “AS IS” AND “AS AVAILABLE,”
+WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE,
+INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, OR COMPATIBILITY.
+
+THE WEIRD BYTE S.L. DOES NOT WARRANT THAT THE SDK WILL BE ERROR-FREE, UNINTERRUPTED,
+SECURE, OR COMPATIBLE WITH ANY PARTICULAR HOST APPLICATION, DEVICE, OPERATING SYSTEM,
+OR SOFTWARE ENVIRONMENT.
+
+9. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL THE WEIRD BYTE S.L.
+OR ITS LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL,
+EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, DATA, GOODWILL,
+BUSINESS OPPORTUNITY, OR BUSINESS INTERRUPTION, ARISING OUT OF OR RELATING TO THIS
+LICENSE, THE SDK, OR ANY PLUGIN, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE TOTAL AGGREGATE LIABILITY OF
+THE WEIRD BYTE S.L. ARISING OUT OF OR RELATING TO THIS LICENSE, THE SDK, OR ANY PLUGIN
+SHALL NOT EXCEED ONE HUNDRED EUROS (EUR 100).
+
+10. Governing Law
+
+This License is governed by the laws of Spain, excluding conflict-of-laws rules.
+The courts of Madrid, Spain shall have exclusive jurisdiction, except where mandatory
+law provides otherwise.
+
+11. Contact
+
+The Weird Byte S.L.
+contact@virtucamera.com
+Calle Pronavata 12
+28420 Galapagar, Madrid
+Spain
