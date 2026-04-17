@@ -143,6 +143,24 @@ class VCBase(metaclass=ABCMeta):
 
         pass
 
+    @abstractmethod
+    def get_units_per_meter(self, vcserver):
+        """ Must return a float value with the units per meter
+        of the scene or the DCC software.
+
+        Parameters
+        ----------
+        vcserver : virtucamera.VCServer object
+            Instance of virtucamera.VCServer calling this method.
+
+        Returns
+        -------
+        float
+            units per meter
+        """
+
+        pass
+
 
     # CAMERA RELATED METHODS:
     # -----------------------
@@ -185,25 +203,32 @@ class VCBase(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_camera_has_keys(self, vcserver, camera_name):
+    def get_camera_has_keys(self, vcserver, camera_name, custom_attributes):
         """ Must Return whether the specified camera has animation keyframes
-        in the transform or flocal length parameters, as a tuple or list,
-        in the following order: (transform_has_keys, focal_length_has_keys)
+        in the transform, focal length, or any of the custom_attributes,
+        as a tuple or list. First element the transform, second the focal length
+        and the next, each custom attribute following the same order as custom_attributes.
+        Like: (transform_has_keys, focal_length_has_keys, custom_attr_1_has_keys, 
+        custom_attr_2_has_keys, ..., custom_attr_n_has_keys)
         * transform_has_keys (bool) - True if the transform has keyframes.
         * focal_length_has_keys (bool) - True if the flen has keyframes.
+        * custom_attr_n_has_keys (bool) - True if the corresponding custom attribute 
+          has keyframes.
 
         Parameters
         ----------
         vcserver : virtucamera.VCServer object
             Instance of virtucamera.VCServer calling this method.
         camera_name : str
-            Name of the camera to check for.
+            Name of the camera to check.
+        custom_attributes : tuple of str
+            names of custom attributes to check.
 
         Returns
         -------
-        tuple or list of 2 bool
+        tuple or list of bool
             whether the camera 'camera_name' has keys or not as
-            (transform_has_keys, focal_length_has_keys)
+            (transform_has_keys, focal_length_has_keys, custom_attr_1_has_keys, ...)
         """
 
         pass
@@ -255,6 +280,28 @@ class VCBase(metaclass=ABCMeta):
         tuple or list of 16 float
             4x4 transform matrix as
             (rxx, rxy, rxz, 0, ryx, ryy, ryz, 0, rzx, rzy, rzz, 0 , tx, ty, tz, 1)
+        """
+
+        pass
+
+    @abstractmethod
+    def get_camera_custom_attr_value(self, vcserver, camera_name, attrib_name):
+        """ Return the value of the attribute from camera_name specified
+        in attrib_name. If the attribute doesn't exist, return None.
+
+        Parameters
+        ----------
+        vcserver : virtucamera.VCServer object
+            Instance of virtucamera.VCServer calling this method.
+        camera_name : str
+            Name of the camera to get values from.
+        attrib_name : str
+            name of custom attribute to get value from.
+
+        Returns
+        -------
+        float
+            value of the specified attribute
         """
 
         pass
@@ -366,9 +413,53 @@ class VCBase(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def remove_camera_keys(self, vcserver, camera_name):
-        """ This method must remove all transform
-        and focal length keyframes in the specified camera.
+    def set_camera_custom_keys(self, vcserver, camera_name, attrib_name, keyframes, values):
+        """ Must set keyframes on the specified attribute of the specified camera.
+        The frame numbers are provided as a tuple of floats and the values are
+        provided as a tuple of floats with value for every keyframe.
+
+        The first element of the 'keyframes' tuple corresponds to the first
+        element of the 'values' tuple, the second to the second, and so on.
+
+        Parameters
+        ----------
+        vcserver : virtucamera.VCServer object
+            Instance of virtucamera.VCServer calling this method.
+        camera_name : str
+            Name of the camera to set the keyframes to.
+        attrib_name : str
+            Name of the attribute to set.
+        keyframes : tuple of floats
+            Frame numbers to create the keyframes on.
+        values : tuple of floats
+            values to be set as keyframes on the camera 'camera_name' and attribute 'attrib_name'.
+        """
+
+        pass
+
+    @abstractmethod
+    def set_custom_attribute(self, vcserver, camera_name, attrib_name, attrib_value):
+        """ Must set the specified custom attribute
+        of the specified camera if exists.
+
+        Parameters
+        ----------
+        vcserver : virtucamera.VCServer object
+            Instance of virtucamera.VCServer calling this method.
+        camera_name : str
+            Name of the camera to set the attribute to.
+        attrib_name : str
+            Name of the attribute to set.
+        attrib_value : float
+            attribute value to be set on the camera 'camera_name' and attribute 'attrib_name'.
+        """
+
+        pass
+
+    @abstractmethod
+    def remove_camera_keys(self, vcserver, camera_name, rm_tr, rm_flen, rm_custom_attributes):
+        """ This method must remove specified transform, focal length
+        and/or custom attribute keyframes in the specified camera.
 
         Parameters
         ----------
@@ -376,6 +467,13 @@ class VCBase(metaclass=ABCMeta):
             Instance of virtucamera.VCServer calling this method.
         camera_name : str
             Name of the camera to remove the keyframes from.
+        rm_tr : bool
+            whether if we have to remove camera transform keyframes.
+        rm_flen : bool
+            whether if we have to remove camera focal length keyframes.
+        rm_custom_attributes : tuple of str
+            names of custom attributes to remove the keyframes from.
+
         """
 
         pass
@@ -609,6 +707,21 @@ class VCBase(metaclass=ABCMeta):
 
         pass
 
+    def set_flags(self, vcserver, flags):
+        """ Optional, this method is called when the app enables
+        or disables certain functionalities. 
+        
+
+        Parameters
+        ----------
+        vcserver : virtucamera.VCServer object
+            Instance of virtucamera.VCServer calling this method.
+        flags : dict
+            A dictionary with affected flag names and its boolean values
+
+        """
+        pass
+
 
     # CUSTOM SCRIPT METHODS:
     # ----------------------
@@ -647,7 +760,8 @@ class VCBase(metaclass=ABCMeta):
         index representing what script to execute from that list/tuple.
 
         This function must return True if the script executed correctly,
-        False if there where errors. It's recommended to print any errors,
+        if there where errors it's recommended to return a list or tuple
+        containing stdout and stderr output and print any errors/traceback
         so that the user has some feedback about what went wrong.
 
         You may want to provide a way for the user to refer to the currently
@@ -662,6 +776,13 @@ class VCBase(metaclass=ABCMeta):
             Script number to be executed.
         current_camera : str
             Name of the currently selected camera
+
+        Returns
+        -------
+        bool / tuple or list of 2 str
+            return True if the script executed correctly.
+            If execution failed, return False or a tuple/list
+            with output from stout and stderr.
         """
 
 
